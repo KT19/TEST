@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <label class="mdl-textfield__label" for="username">Username</label>
+    <input class="mdl-textfield__input" name="username" id= "username" required>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <label class="mdl-textfield__label" for="password">Password</label>
+    <input class="mdl-textfield__input" type="password" name="password" id="password" required>
+  </div>
+
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 100px; height: 40px; min-width: initial;">
+    Register
+  </button>
+</form>
+{% endblock %}

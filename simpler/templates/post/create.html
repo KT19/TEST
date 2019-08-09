@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}New{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <label class="mdl-textfield__label" for="title">タイトル</label>
+    <input class="mdl-textfield__input" type="test" name="title" id="title" value="{{ request.form['title'] }}" required>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield">
+    <label class="mdl-textfield__label" for="body">コメント</label>
+    <textarea class="mdl-textfield__input" type="text" name="body" rows= "3" id="body" required>{{ request.form["body"] }}</textarea>
+  </div>
+
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 100px; height: 40px; min-width: initial;">
+    post
+  </button>
+
+</form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Time Line{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('post.create') }}">What's New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article class="post">
+      <header>
+        <style>
+        .card-wide.mdl-card {
+          width: 512px;
+        }
+        .card-wide > .mdl-card__title {
+          color: #fff;
+          height: 176px;
+          background: #b0c4de;
+        }
+
+        </style>
+
+        <div class="card-wide mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h1 class="mdl-card__title-text">{{ post["body"] }}</h1>
+          </div>
+          <div class="mdl-card__supporting-text">
+            {{ post["username"] }}のコメント　({{ post["created"].strftime("%Y-%m-%d") }})
+          </div>
+          {% if g.user['id'] == post['author_id'] %}
+          <div class="mdl-card__actions mdl-card--border">
+            <a class="action" href="{{ url_for('post.delete', id=post['id']) }}">Delete</a>
+          </div>
+          {% endif %}
+        </div>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
